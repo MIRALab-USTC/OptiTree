@@ -1,0 +1,13 @@
+defaults:
+  - _self_
+  - hydra: or
+api_key: None
+task_name: or_intruct
+llm: deepseek-chat
+path: ./data/OR-Instruct-Data-3K.json
+outpath: ./train_results/${task_name}/${llm}/${now:%m-%d-%H:%M:%S}/
+url: https://api.deepseek.com/v1/
+template_path: tree_update.jsonl
+tree_path: tree_mapping.jsonl  
+
+

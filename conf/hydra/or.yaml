@@ -1,0 +1,27 @@
+run:
+  dir: ${outpath}
+job_logging:
+  formatters:
+    simple:
+      format: '[%(asctime)s][%(levelname)s] - %(message)s'
+      datefmt: '%Y-%m-%d %H:%M:%S'
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: simple
+      stream: ext://sys.stdout
+      level: INFO
+    file:
+      class: logging.FileHandler
+      formatter: simple
+      filename: ${hydra.runtime.output_dir}/${hydra.job.name}.log
+      level: INFO
+  root:
+    level: INFO
+    handlers: [console, file]
+  loggers:
+    requests:
+      level: WARNING
+    urllib3:
+      level: WARNING
+  disable_existing_loggers: false
